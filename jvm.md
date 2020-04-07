@@ -10,3 +10,9 @@
 |-XX:+PrintGCApplicationStoppedTime|打印暂停时间|false|
 |-XX:+PrintGCApplicationConcurrentTime|进程并发执行时间|false|
 |-XX:+PrintHeapAtGC|gc时打印heap信息|false|
+
+
+### g1
+|参数|描述|默认值|
+|-|-|-|
+|-XX:+UseG1GC|启动g1|java9成为默认|
