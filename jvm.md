@@ -10,7 +10,7 @@
 |-XX:+PrintGCApplicationStoppedTime|打印暂停时间|false|
 |-XX:+PrintGCApplicationConcurrentTime|进程并发执行时间|false|
 |-XX:+PrintHeapAtGC|gc时打印heap信息|false|
-
+|-XX:+HeapDumpOnOutOfMemoryError|发生oome的时候触发heapdump|false|
 
 ### g1
 |参数|描述|默认值|
