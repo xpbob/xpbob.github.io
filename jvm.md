@@ -13,6 +13,10 @@
 |-XX:+PrintHeapAtGC|gc时打印heap信息|false|
 |-XX:+PrintGCDateStamps|以日期的形式打印时间戳|false|
 |-XX:+PrintGCTimeStamps|相对时间打印时间戳,单位s|true|
+
+### heap dump
+|参数|描述|默认值| 
+|-|-|-| 
 |-XX:+HeapDumpOnOutOfMemoryError|发生oome的时候触发heapdump|false|
 |-XX:+HeapDumpBeforeFullGC|发生fullgc之前触发heapdump|false|
 |-XX:+HeapDumpAfterFullGC|发生fullgc之后触发heapdump|false|
