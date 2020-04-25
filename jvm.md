@@ -20,6 +20,7 @@
 |-XX:+HeapDumpOnOutOfMemoryError|发生oome的时候触发heapdump|false|
 |-XX:+HeapDumpBeforeFullGC|发生fullgc之前触发heapdump|false|
 |-XX:+HeapDumpAfterFullGC|发生fullgc之后触发heapdump|false|
+|-XX:HeapDumpPath|heapdump的路径，可以写路径或者文件名,路径一定要存在|java_pid<pid>.hprof|
 
 ### g1
 |参数|描述|默认值|
