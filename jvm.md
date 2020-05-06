@@ -28,6 +28,12 @@
 |-XX:+UseG1GC|启动g1|java9成为默认|
 
 
+### cms
+|参数|描述|默认值|
+|-|-|-|
+|-XX:+UseConcMarkSweepGC|开启cms|-|
+
+
 ### debug
 |参数|描述|默认值| 
 |-|-|-| 
