@@ -33,6 +33,11 @@
 |-|-|-|
 |-XX:+UseConcMarkSweepGC|开启cms|-|
 
+### 
+|参数|描述|默认值|
+|-|-|-|
+|-XX:+UseParallelGC|开启ps|-|
+
 
 ### debug
 |参数|描述|默认值| 
@@ -43,3 +48,5 @@
 |参数|描述|默认值| 
 |-|-|-|
 |-Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=3000|jmx端口暴露|-|
+
+
