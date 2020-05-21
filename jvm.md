@@ -2,6 +2,7 @@
 |参数|描述|默认值| 
 |-|-|-| 
 | -XX:+PrintAOT|打出使用aot的klasses和method|-| 
+|-XX:AOTLibrary|指定aot的库的位置|-|
 
 ### 直接内存
 |参数|描述|默认值| 
