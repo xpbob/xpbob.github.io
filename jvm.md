@@ -4,6 +4,13 @@
 | -XX:+PrintAOT|打出使用aot的klasses和method|-| 
 |-XX:AOTLibrary|指定aot的库的位置|-|
 
+
+### lambda
+|参数|描述|默认值| 
+|-|-|-|
+|-Djdk.internal.lambda.dumpProxyClasses|设置动态生成的lambda表达式的存放位置|-|
+
+
 ### 直接内存
 |参数|描述|默认值| 
 |-|-|-| 
