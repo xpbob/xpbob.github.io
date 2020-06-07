@@ -26,6 +26,7 @@
 |-XX:+PrintHeapAtGC|gc时打印heap信息|false|
 |-XX:+PrintGCDateStamps|以日期的形式打印时间戳|false|
 |-XX:+PrintGCTimeStamps|相对时间打印时间戳,单位s|true|
+|-Xloggc:|gclog位置|-|
 
 ### heap dump
 |参数|描述|默认值| 
