@@ -16,6 +16,11 @@
 |-|-|-| 
 |-XX:MaxDirectMemorySize|最大直接内存直接内存限制|Runtime.getRuntime().maxMemory();| 
 
+### metaspace
+|参数|描述|默认值| 
+|-|-|-| 
+|-XX:CompressedClassSpaceSize|指针压缩空间大小|1g| 
+
 ### gc log
 |参数|描述|默认值| 
 |-|-|-| 
