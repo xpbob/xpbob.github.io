@@ -51,8 +51,9 @@
 |参数|描述|默认值|
 |-|-|-|
 |-XX:+UseConcMarkSweepGC|开启cms|-|
+|-XX:PretenureSizeThreshold|超过设置*字节大小*的对象会直接分配在老年代|0|
 
-### 
+### ps
 |参数|描述|默认值|
 |-|-|-|
 |-XX:+UseParallelGC|开启ps|-|
