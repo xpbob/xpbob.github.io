@@ -70,3 +70,10 @@
 |-Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=3000|jmx端口暴露|-|
 
 
+### nmt
+|参数|描述|默认值| 
+|-|-|-|
+|-XX:NativeMemoryTracking=|开启nmt||
+|jcmd pid VM.native_memory detail/baseline/detail.diff/summary|利用jcmd查看内存变化||
+
+
