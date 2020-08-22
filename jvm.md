@@ -64,6 +64,12 @@
 |-XX:+UseParallelGC|开启ps|-|
 |-XX:+UseParallelOldGC|开启ps old|-|
 
+### Serial
+|参数|描述|默认值|
+|-|-|-|
+|-XX:+UseSerialGC|开启Serial|-|
+
+
 ### debug
 |参数|描述|默认值| 
 |-|-|-| 
