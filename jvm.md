@@ -64,6 +64,11 @@
 |-XX:+UseParallelGC|开启ps|-|
 |-XX:+UseParallelOldGC|开启ps old|-|
 
+### zgc
+|参数|描述|默认值|
+|-|-|-|
+|-XX:+UseZGC|开启zgc|false|
+
 ### Serial
 |参数|描述|默认值|
 |-|-|-|
