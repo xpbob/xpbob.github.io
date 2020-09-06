@@ -88,3 +88,7 @@
 |jcmd pid VM.native_memory detail/baseline/detail.diff/summary|利用jcmd查看内存变化||
 
 
+### jfr
+|参数|描述|默认值| 
+|-|-|-|
+|dumponexit|jvm退出时生成jfr|false|
