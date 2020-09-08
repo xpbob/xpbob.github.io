@@ -89,6 +89,7 @@
 
 
 ### jfr
-|参数|描述|默认值| 
-|-|-|-|
-|dumponexit|jvm退出时生成jfr|false|
+|参数|描述|默认值| 备注|
+|-|-|-|-|
+|dumponexit|jvm退出时生成jfr|false||
+|duration|记录的持续时间|0|(s)econds, (m)inutes, (h)ours, or (d)ays|
