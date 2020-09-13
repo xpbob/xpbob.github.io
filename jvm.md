@@ -93,3 +93,4 @@
 |-|-|-|-|
 |dumponexit|jvm退出时生成jfr|false||
 |duration|记录的持续时间|0|(s)econds, (m)inutes, (h)ours, or (d)ays|
+|filename|生成的文件名|hotspot-pid-${pid}-id-${count}-${time}.jfr||
