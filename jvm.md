@@ -94,7 +94,7 @@
 |dumponexit|jvm退出时生成jfr|false||
 |duration|记录的持续时间|0|(s)econds, (m)inutes, (h)ours, or (d)ays|
 |filename|生成的文件名|hotspot-pid-${pid}-id-${count}-${time}.jfr||
-
+|disk|是否写入磁盘|true|global buffer 满了之后，是直接丢弃还是写入磁盘文件|
 
 
 ### 公用参数
