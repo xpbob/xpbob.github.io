@@ -96,6 +96,7 @@
 |filename|生成的文件名|hotspot-pid-${pid}-id-${count}-${time}.jfr||
 |disk|是否写入磁盘|true|global buffer 满了之后，是直接丢弃还是写入磁盘文件|
 |maxage|写入磁盘最大的时间间隔|0|in (s)econds, (m)inutes, (h)ours, or (d)ays，0是没有限制|
+|maxsize|写入磁盘的文件大小|0|in (M)B or (G)B.0是没有限制|
 |path-to-gc-roots|收集 gc root路径|false||
 
 ### 公用参数
