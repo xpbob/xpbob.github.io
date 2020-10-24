@@ -1,4 +1,14 @@
-
+# 用户和邮箱
+## 查看用户和邮箱
+```
+git config user.name
+git config user.email
+```
+## 设置用户和邮箱
+```
+git config --global user.name "username"
+git config --global user.email "email"
+```
 
 # git 使用远程覆盖本地
 git reset --hard origin/master
