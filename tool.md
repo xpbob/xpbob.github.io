@@ -41,3 +41,22 @@ systemctl enable xx.service
 ```
 journalctl -u service-name.service
 ```
+
+# 查找
+find [路径]  [选项] [操作]
+- -name 按照名称查找
+- -iname 按照名称查找，忽略大小写
+- -type 按照类型去查找  
+
+|type|名称|
+|-|-|
+|f|文件|
+|d|目录|
+|c|字符设备|
+|b|块设备|
+|l|连接|
+|p|管道|
+
+- -size 按照大小
+-size +1M 代表大于1m -1m 代表小于1m
+- -exec 对搜索到的文件执行特定的操作
