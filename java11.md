@@ -1,0 +1,27 @@
+|8|11|
+|-|-|
+|G1PrintHeapRegions|-Xlog:gc+region=trace|
+|PrintAdaptiveSizePolicy|-Xlog:ergo*=trace|
+|PrintGC|-Xlog:gc|
+|PrintGCDetails|-Xlog:gc*|
+|PrintGCApplicationConcurrentTime PrintGCApplicationStoppedTime|-Xlog:safepoint|
+|PrintGCTaskTimeStamps|-Xlog:task*=debug|
+|PrintHeapAtGC|-Xlog:gc+heap=trace|
+|PrintReferenceGC|-Xlog:ref*=debug|
+|PrintStringDeduplicationStatistics|-Xlog:stringdedup*=debug|
+|PrintTenuringDistribution|-Xlog:age*=debug|
+|TraceExceptions|-Xlog:exceptions=info|
+|TraceClassLoading|-Xlog:class+load=trace|
+|TraceClassLoadingPreorder|-Xlog:class+preorder=debug|
+|TraceClassUnloading|-Xlog:class+unload=trace|
+|VerboseVerification|-Xlog:verification=info|
+|TraceClassPaths|-Xlog:class+path=info|
+|TraceClassResolution|-Xlog:class+resolve=debug|
+|TraceClassInitialization|-Xlog:class+init=info|
+|TraceLoaderConstraints|-Xlog:class+loader+constraints=info|
+|TraceClassLoaderData|-Xlog:class+loader+data=debug|
+|TraceSafepointCleanupTime|-Xlog:safepoint+cleanup=info|
+|TraceSafepoint|-Xlog:safepoint=debug|
+|TraceMonitorInflation|-Xlog:monitorinflation=debug|
+|TraceBiasedLocking|-Xlog:biasedlocking=trace|
+|TraceRedefineClasses|-Xlog:redefine+class*=trace|
