@@ -23,3 +23,5 @@ git reset --hard id
 # git 强制推送
 git push -f origin master
  
+# 查看上次放在缓存区的内容
+git diff --cached
