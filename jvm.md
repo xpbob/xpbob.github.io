@@ -39,6 +39,11 @@
 |-XX:+PrintGCTimeStamps|相对时间打印时间戳,单位s|true|
 |-Xloggc:|gclog位置|-|
 
+### gc公用参数
+|参数|描述|默认值| 
+|-|-|-|
+|-XX:+ParallelRefProcEnabled|开启多线程处理引用|false|
+
 ### heap dump
 |参数|描述|默认值| 
 |-|-|-| 
