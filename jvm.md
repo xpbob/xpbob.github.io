@@ -104,6 +104,7 @@
 |maxage|写入磁盘最大的时间间隔|0|in (s)econds, (m)inutes, (h)ours, or (d)ays，0是没有限制|
 |maxsize|写入磁盘的文件大小|0|in (M)B or (G)B.0是没有限制|
 |path-to-gc-roots|收集 gc root路径|false||
+|-XX:StartFlightRecording=|||
 
 ### 公用参数
 |参数|描述|默认值| 
