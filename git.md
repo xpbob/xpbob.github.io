@@ -23,6 +23,26 @@ git reset --soft id
 git reset --hard id
 ```
 
+
+# 回退提交
+
+撤销前一次 commit
+```
+git revert HEAD                  
+```
+撤销前前一次 commit
+```
+git revert HEAD^
+```
+撤回指定commit-id
+```
+git revert commit-id 
+```
+比如：git revert 0818badf6882ea2664a205bc8ef3a85425bb2537
+
+
+
+
 # git 强制推送
 ```
 git push -f origin master
@@ -35,3 +55,4 @@ git diff --cached
 ```
 git diff 查看某个变更
 ```
+
