@@ -55,4 +55,7 @@ git diff --cached
 ```
 git diff 查看某个变更
 ```
-
+# 重命名
+```
+git mv xx xxx
+```
