@@ -59,3 +59,10 @@ git diff 查看某个变更
 ```
 git mv xx xxx
 ```
+
+
+# 暂存改动
+```
+git stash
+git stash pop
+```
