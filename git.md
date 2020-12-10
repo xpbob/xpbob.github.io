@@ -66,3 +66,8 @@ git mv xx xxx
 git stash
 git stash pop
 ```
+
+# 打印所有标签
+```
+git tag
+```
