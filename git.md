@@ -66,8 +66,12 @@ git mv xx xxx
 git stash
 git stash pop
 ```
-
-# 打印所有标签
+# 标签
+## 打印所有标签
 ```
 git tag
+```
+## 创建标签(本地)
+```
+git tag 1.0.0
 ```
