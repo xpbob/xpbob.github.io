@@ -40,8 +40,14 @@ git revert commit-id
 ```
 比如：git revert 0818badf6882ea2664a205bc8ef3a85425bb2537
 
-
-
+# 保存当前的修改
+git stash用于想要保存当前的修改,但是想回到之前最后一次提交的干净的工作仓库时进行的操作.git stash将本地的修改保存起来,并且将当前代码切换到HEAD提交上.
+开发到一半,同步远端代码
+```
+git stash
+git pull
+git stash pop
+```
 
 # git 强制推送
 ```
@@ -75,3 +81,4 @@ git tag
 ```
 git tag 1.0.0
 ```
+
