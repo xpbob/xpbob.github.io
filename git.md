@@ -1,23 +1,22 @@
 <!--ts-->
-   * [用户和邮箱](#\xE7\x94\xA8\xE6\x88\xB7\xE5\x92\x8C\xE9\x82\xAE\xE7\xAE\xB1)
-      * [查看用户和邮箱](#\xE6\x9F\xA5\xE7\x9C\x8B\xE7\x94\xA8\xE6\x88\xB7\xE5\x92\x8C\xE9\x82\xAE\xE7\xAE\xB1)
-      * [设置用户和邮箱](#\xE8\xAE\xBE\xE7\xBD\xAE\xE7\x94\xA8\xE6\x88\xB7\xE5\x92\x8C\xE9\x82\xAE\xE7\xAE\xB1)
-   * [git 使用远程覆盖本地](#git-\xE4\xBD\xBF\xE7\x94\xA8\xE8\xBF\x9C\xE7\xA8\x8B\xE8\xA6\x86\xE7\x9B\x96\xE6\x9C\xAC\xE5\x9C\xB0)
-   * [回退到某个版本，不删除本地code](#\xE5\x9B\x9E\xE9\x80\x80\xE5\x88\xB0\xE6\x9F\x90\xE4\xB8\xAA\xE7\x89\x88\xE6\x9C\xAC\xE4\xB8\x8D\xE5\x88\xA0\xE9\x99\xA4\xE6\x9C\xAC\xE5\x9C\xB0code)
-   * [回退到具体的版本，删除本地code](#\xE5\x9B\x9E\xE9\x80\x80\xE5\x88\xB0\xE5\x85\xB7\xE4\xBD\x93\xE7\x9A\x84\xE7\x89\x88\xE6\x9C\xAC\xE5\x88\xA0\xE9\x99\xA4\xE6\x9C\xAC\xE5\x9C\xB0code)
-   * [回退提交](#\xE5\x9B\x9E\xE9\x80\x80\xE6\x8F\x90\xE4\xBA\xA4)
-   * [保存当前的修改](#\xE4\xBF\x9D\xE5\xAD\x98\xE5\xBD\x93\xE5\x89\x8D\xE7\x9A\x84\xE4\xBF\xAE\xE6\x94\xB9)
-   * [git 强制推送](#git-\xE5\xBC\xBA\xE5\x88\xB6\xE6\x8E\xA8\xE9\x80\x81)
-   * [查看上次放在缓存区的内容](#\xE6\x9F\xA5\xE7\x9C\x8B\xE4\xB8\x8A\xE6\xAC\xA1\xE6\x94\xBE\xE5\x9C\xA8\xE7\xBC\x93\xE5\xAD\x98\xE5\x8C\xBA\xE7\x9A\x84\xE5\x86\x85\xE5\xAE\xB9)
-   * [查看变动](#\xE6\x9F\xA5\xE7\x9C\x8B\xE5\x8F\x98\xE5\x8A\xA8)
-   * [查看提交记录](#\xE6\x9F\xA5\xE7\x9C\x8B\xE6\x8F\x90\xE4\xBA\xA4\xE8\xAE\xB0\xE5\xBD\x95)
-   * [重命名](#\xE9\x87\x8D\xE5\x91\xBD\xE5\x90\x8D)
-   * [暂存改动](#\xE6\x9A\x82\xE5\xAD\x98\xE6\x94\xB9\xE5\x8A\xA8)
-   * [标签](#\xE6\xA0\x87\xE7\xAD\xBE)
-      * [打印所有标签](#\xE6\x89\x93\xE5\x8D\xB0\xE6\x89\x80\xE6\x9C\x89\xE6\xA0\x87\xE7\xAD\xBE)
-      * [创建标签(本地)](#\xE5\x88\x9B\xE5\xBB\xBA\xE6\xA0\x87\xE7\xAD\xBE\xE6\x9C\xAC\xE5\x9C\xB0)
-
-<!-- Added by: xie, at: 2020年12月26日 星期六 20时40分14秒 CST -->
+   * [用户和邮箱](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#用户和邮箱)
+      * [查看用户和邮箱](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#查看用户和邮箱)
+      * [设置用户和邮箱](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#设置用户和邮箱)
+   * [git 使用远程覆盖本地](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#git-使用远程覆盖本地)
+   * [回退到某个版本，不删除本地code](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#回退到某个版本不删除本地code)
+   * [回退到具体的版本，删除本地code](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#回退到具体的版本删除本地code)
+   * [回退提交](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#回退提交)
+   * [保存当前的修改](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#保存当前的修改)
+   * [git 强制推送](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#git-强制推送)
+   * [查看上次放在缓存区的内容](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#查看上次放在缓存区的内容)
+   * [查看变动](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#查看变动)
+   * [查看提交记录](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#查看提交记录)
+   * [重命名](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#重命名)
+   * [暂存改动](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#暂存改动)
+   * [标签](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#标签)
+      * [打印所有标签](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#打印所有标签)
+      * [创建标签(本地)](https://github.com/xpbob/xpbob.github.io/blob/master/git.md#创建标签本地)
+<!-- Added by: xie, at: 2020年12月26日 星期六 21时01分17秒 CST -->
 
 <!--te-->
 # 用户和邮箱
