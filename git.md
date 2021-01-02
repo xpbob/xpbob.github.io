@@ -87,6 +87,10 @@ git diff 查看某个变更
 ```
 git log --stat
 ```
+```
+git log --stat -<number> 限制显示历史提交的数量
+```
+
 # 重命名
 ```
 git mv xx xxx
