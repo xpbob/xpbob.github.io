@@ -43,7 +43,11 @@ git reset --soft id
 ```
 git reset --hard id
 ```
-
+# push
+```
+git push <远程主机名> <本地分支名>:<远程分支名>如果本地分支名与远程分支名相同，则可以省略冒号：
+git push <远程主机名> <本地分支名>
+```
 
 # 回退提交
 
