@@ -19,6 +19,14 @@
 <!-- Added by: xie, at: 2020年12月26日 星期六 21时01分17秒 CST -->
 
 <!--te-->
+## 更改提交远程的仓库
+```
+ git remote rm origin
+ git remote add origin xx
+```
+
+
+#
 # 用户和邮箱
 ## 查看用户和邮箱
 ```
