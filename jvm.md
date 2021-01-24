@@ -43,6 +43,7 @@
 |参数|描述|默认值| 
 |-|-|-|
 |-XX:+ParallelRefProcEnabled|开启多线程处理引用|false|
+| -XX:ParallelGCThreads=|gc线程个数|当 CPU 数量小于8， ParallelGCThreads 的值等于 CPU 数量，当 CPU 数量大于 8 时，ParallelGCThreads = 8 + ((N - 8) * 5/8)|
 
 ### heap dump
 |参数|描述|默认值| 
