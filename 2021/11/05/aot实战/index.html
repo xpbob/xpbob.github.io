@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hello World | Hexo</title>
+  <title>aot实战 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="aot介绍 aot是Ahead-Of-Time的缩写，以前大家都知道java的一个定位就是半编译，半解释型语言。他把java文件编译成class文件，最后jvm解释执行class文件，jvm可以把class文件解释为对应的机器码，这个就是靠的jit。aot则是直接把class文件编译系统的库文件，不在依靠jit去做这个事情。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2021/10/17/hello-world/index.html">
+<meta property="og:title" content="aot实战">
+<meta property="og:url" content="http://example.com/2021/11/05/aot%E5%AE%9E%E6%88%98/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="aot介绍 aot是Ahead-Of-Time的缩写，以前大家都知道java的一个定位就是半编译，半解释型语言。他把java文件编译成class文件，最后jvm解释执行class文件，jvm可以把class文件解释为对应的机器码，这个就是靠的jit。aot则是直接把class文件编译系统的库文件，不在依靠jit去做这个事情。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-17T03:41:39.389Z">
-<meta property="article:modified_time" content="2021-10-17T03:41:39.389Z">
+<meta property="article:published_time" content="2021-11-05T14:54:55.000Z">
+<meta property="article:modified_time" content="2021-12-25T10:58:43.648Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="aot">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -166,39 +167,145 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-aot实战" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      aot实战
     </h1>
   
 
         
-        <a href="/2021/10/17/hello-world/" class="archive-article-date">
-  	<time datetime="2021-10-17T03:41:39.389Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-17</time>
+        <a href="/2021/11/05/aot%E5%AE%9E%E6%88%98/" class="archive-article-date">
+  	<time datetime="2021-11-05T14:54:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="aot介绍"><a href="#aot介绍" class="headerlink" title="aot介绍"></a>aot介绍</h1><hr>
+<p>aot是Ahead-Of-Time的缩写，以前大家都知道java的一个定位就是半编译，半解释型语言。他把java文件编译成class文件，最后jvm解释执行class文件，jvm可以把class文件解释为对应的机器码，这个就是靠的jit。aot则是直接把class文件编译系统的库文件，不在依靠jit去做这个事情。</p>
+<span id="more"></span>
+<h1 id="第一个aot的程序"><a href="#第一个aot的程序" class="headerlink" title="第一个aot的程序"></a>第一个aot的程序</h1><hr>
+<h2 id="demo环境"><a href="#demo环境" class="headerlink" title="demo环境"></a>demo环境</h2><table>
+<thead>
+<tr>
+<th>要求</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>系统</td>
+<td>macos</td>
+</tr>
+<tr>
+<td>java</td>
+<td>jdk11</td>
+</tr>
+<tr>
+<td>本地编译</td>
+<td>xcode11</td>
+</tr>
+</tbody></table>
+<p>这里提到了系统和编译器。可以说写c需要什么，这里就需要准备什么，简单点的话，最好准备和系统配套的编译器，减少编译的坑。</p>
+<h2 id="java代码"><a href="#java代码" class="headerlink" title="java代码"></a>java代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AotTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;first aot&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>平平无奇，和我们普通写java一样。<br>编译java文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac AotTest.java</span><br></pre></td></tr></table></figure>
+<p>平平无奇，和我们平时编译也没区别。<br>开始编译成本地库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jaotc --output libtest.so AotTest.class</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>jaotc是jdk提供的编译成本地库的方式。他和java一样，在bin目录下，如果配置了环境变量，是可以执行的。<br>如果系统和编译器匹配，这里就是一把过。最终会在本地生成libtest.so的文件。<br>开始执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -XX:AOTLibrary=./libtest.so AotTest</span><br></pre></td></tr></table></figure>
+<p>编译成本地库，我们也还是要指定一下main的类，这个和以前java -cp执行没有区别。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">first aot</span><br></pre></td></tr></table></figure>
+<p>不出意外可以执行方法。<br>你一定也发现了，这个操作很繁琐，这还是一个文件，要是编译出来的class特别多，怎么办。而且还没有管理的工程文件。<br>这点jdk已经帮我们想到了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> jaotc</span><br><span class="line">Usage: jaotc  list</span><br><span class="line"></span><br><span class="line">  list       A : separated list of class names, modules, jar files</span><br><span class="line">             or directories which contain class files.</span><br><span class="line"></span><br><span class="line">where options include:</span><br><span class="line">  --output             Output file name</span><br><span class="line">  --class-name  List of classes to compile</span><br><span class="line">  --jar            List of jar files to compile</span><br><span class="line">  --module          List of modules to compile</span><br><span class="line">  --directory          List of directories where to search for files to compile</span><br><span class="line">  --search-path        List of directories where to search for specified files</span><br><span class="line">  --compile-commands   Name of file with compile commands</span><br><span class="line">  --compile-for-tiered       Generate profiling code for tiered compilation</span><br><span class="line">  --compile-with-assertions  Compile with java assertions</span><br><span class="line">  --compile-threads  Number of compilation threads to be used</span><br><span class="line">  --ignore-errors            Ignores all exceptions thrown during class loading</span><br><span class="line">  --exit-on-error            Exit on compilation errors</span><br><span class="line">  --info                     Print information during compilation</span><br><span class="line">  --verbose                  Print verbose information</span><br><span class="line">  --debug                    Print debug information</span><br><span class="line">  -? -h --help               Print this help message</span><br><span class="line">  --version                  Version information</span><br><span class="line">  --linker-path              Full path to linker executable</span><br><span class="line">  -J                   Pass  directly to the runtime system</span><br></pre></td></tr></table></figure>
+<p>查看帮助文档，发现他支持的扫描方式多种多样，最简单的方式，我们依旧使用maven编译，最后打成的jar包。通过–jar参数来生成库文件。</p>
+<h1 id="aot的限制"><a href="#aot的限制" class="headerlink" title="aot的限制"></a>aot的限制</h1><hr>
+<h2 id="启动参数固定化"><a href="#启动参数固定化" class="headerlink" title="启动参数固定化"></a>启动参数固定化</h2><p>jaotc可以通过加-J参数来指定jvm的启动参数。<br>我们尝试使用cms来编译一下库文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jaotc   -J-XX:+UseConcMarkSweepGC --output libtest.so AotTest.class</span><br></pre></td></tr></table></figure>
+<p>执行的结果会有两条信息。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Java HotSpot(TM) 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.</span><br><span class="line">Error occurred during initialization of VM</span><br><span class="line">JVMCI Compiler does not support selected GC: concurrent mark sweep gc</span><br></pre></td></tr></table></figure>
+<p>第一条是cms已经标记为废弃。第二条是jvmci不支持cms。<br>按照官方文档上讲，现在的aot支持ps和g1。其他的并不支持。<br>我们下面试试ps，因为现在默认已经是g1了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jaotc   -J-XX:+UseParallelGC --output libtest.so AotTest.class</span><br></pre></td></tr></table></figure>
+<p>发现是成功的。<br><strong>启动的参数需要固定化</strong><br>这也就是说你有两种配置，就得先用jaotc去编译出两个版本的库，在用的时候进行选择。</p>
+<h2 id="编译参数和启动参数要一致"><a href="#编译参数和启动参数要一致" class="headerlink" title="编译参数和启动参数要一致"></a>编译参数和启动参数要一致</h2><p>我们基于上面产生ps的libtest.so，我们尝试换个启动参数。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java  -XX:+UseConcMarkSweepGC -XX:AOTLibrary=./libtest.so AotTest</span><br><span class="line">java  -XX:+UseParallelGC -XX:AOTLibrary=./libtest.so AotTest</span><br><span class="line">java  -XX:+UseG1GC -XX:AOTLibrary=./libtest.so AotTest</span><br></pre></td></tr></table></figure>
+<p>你会发现上面三个启动参数都会执行正确，并没有报错。<br>是不是感觉违背了官方讲的编译和启动一致的这个要求。<br>这里介绍一个参数。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-XX:+PrintAOT</span><br></pre></td></tr></table></figure>
+<p>这个参数可以打出使用aot的klasses和method。我们下面再试试G1（库是上面指定了ps的）。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java  -XX:+UseG1GC -XX:+PrintAOT -XX:AOTLibrary=./libtest.so AotTest</span><br></pre></td></tr></table></figure>
+<p>我们会发现有不一样的输出。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Shared file ./libtest.so error: used &#x27;parallel gc&#x27; is different from current &#x27;g1 gc&#x27;</span><br><span class="line">      7    1     skipped ./libtest.so  aot library</span><br></pre></td></tr></table></figure>
+<p>这里会有一个错误提示，说libtest.so是使用了ps和现在用的g1不一样。跳过了这个库。<br>然后对比一下ps的结果。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> 12    1     loaded    ./libtest.so  aot library</span><br><span class="line">113    1     aot[ 1]   AotTest.()V</span><br><span class="line">113    2     aot[ 1]   AotTest.main([Ljava/lang/String;)V</span><br></pre></td></tr></table></figure>
+<p>发现ps是可以打印出aot的方法的。</p>
+<h2 id="class文件是必须存在"><a href="#class文件是必须存在" class="headerlink" title="class文件是必须存在"></a>class文件是必须存在</h2><p>我们既然编译出可执行文件了，那么class文件是不是可以不要了呢。答案是不行的。我们下面用一个复杂一点的案例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestB</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;this is TestB&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>准备一个调用类。<br>然后在另外一个文件里调用B。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AotTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TestB.main(<span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们这次把B单独编译成库,依旧使用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jaotc --output  libB.so TestB.class</span><br></pre></td></tr></table></figure>
+<p>现在删除TestB.class，再次执行。我们发现会报下面的错误。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: TestB</span><br><span class="line">	at AotTest.main(AotTest.java:3)</span><br><span class="line">Caused by: java.lang.ClassNotFoundException: TestB</span><br><span class="line">	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)</span><br><span class="line">	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)</span><br><span class="line">	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)</span><br><span class="line">	... 1 more</span><br></pre></td></tr></table></figure>
+<p>直接是NoClassDefFoundError。</p>
+<p><strong>所以aot的存在是替换了jit的部分，并不代表所有的数据都在生成的二进制文件里。aot并不是把java变成了例如c那种的可执行文件，他只是不需要动态的编译了，直接拿到现成的结果。</strong></p>
+<h1 id="解惑"><a href="#解惑" class="headerlink" title="解惑"></a>解惑</h1><hr>
+<p>既然aot是一种固化，那么对动态的一些特性是否有影响呢。</p>
+<h2 id="aot与反射"><a href="#aot与反射" class="headerlink" title="aot与反射"></a>aot与反射</h2><p>我写了一个比较简单的demo，发现aot是支持反射的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AotTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Class&lt;?&gt; testB=Class.forName(<span class="string">&quot;TestB&quot;</span>);</span><br><span class="line">           Field fields = testB.getDeclaredField(<span class="string">&quot;SS&quot;</span>);</span><br><span class="line">            fields.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">              String ss = (String) fields.get(<span class="keyword">null</span>);</span><br><span class="line">              System.out.println(ss);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestB</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String SS=<span class="string">&quot;ggg&quot;</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;this is TestB&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>我们把两个class文件打到一个库里。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jaotc  --output libtest.so AotTest.class TestB.class</span><br></pre></td></tr></table></figure>
+<p>执行我们看到，TestB也是可以正常执行的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">java  -XX:+PrintAOT  -XX:AOTLibrary=./libtest.so AotTest</span><br><span class="line">    747    1     loaded    ./libtest.so  aot library</span><br><span class="line">    828    1     aot[ 1]   AotTest.()V</span><br><span class="line">    828    2     aot[ 1]   AotTest.main([Ljava/lang/String;)V</span><br><span class="line">    828    3     aot[ 1]   TestB.()V</span><br><span class="line">    828    4     aot[ 1]   TestB.main([Ljava/lang/String;)V</span><br><span class="line">ggg</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h2 id="aot与lambda"><a href="#aot与lambda" class="headerlink" title="aot与lambda"></a>aot与lambda</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import java.lang.reflect.Field;</span><br><span class="line"></span><br><span class="line">public class AotTest &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        Class&amp;lt;?&amp;gt; testB=Class.forName(&quot;TestB&quot;);</span><br><span class="line">           Field fields = testB.getDeclaredField(&quot;SS&quot;);</span><br><span class="line">            fields.setAccessible(true);</span><br><span class="line">              String ss = (String) fields.get(null);</span><br><span class="line">              System.out.println(ss);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">              MathOperation addition = (int a, int b) -&gt; a + b;</span><br><span class="line">              addition.operation(1, 2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface MathOperation &#123;</span><br><span class="line">    int operation(int a, int b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>沿用上面的例子，加了一个lambda。我们看看结果。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> java  -XX:+PrintAOT  -XX:AOTLibrary=./libtest.so AotTest</span></span><br><span class="line">    673    1     loaded    ./libtest.so  aot library</span><br><span class="line">    752    1     aot[ 1]   AotTest.lambda$main$0(II)I</span><br><span class="line">    752    2     aot[ 1]   AotTest.()V</span><br><span class="line">    752    3     aot[ 1]   AotTest.main([Ljava/lang/String;)V</span><br><span class="line">    753    4     aot[ 1]   TestB.()V</span><br><span class="line">    753    5     aot[ 1]   TestB.main([Ljava/lang/String;)V</span><br><span class="line">ggg</span><br></pre></td></tr></table></figure>
+<p>我们发现lambda也是可以正常运行的。</p>
+<p>lambda是动态生成字节码的典型了，是不是动态生成的，aot也会全量支持呢。我们下面来验证这个问题。<br>lambda是核心类库，所以这次我们把核心类库也编译了。以防误差。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jaotc --output libjava.base.so --module java.base</span><br></pre></td></tr></table></figure>
+<p>编写一个lambda的简单demo。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AotTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">              MathOperation addition = (<span class="keyword">int</span> a, <span class="keyword">int</span> b) -&gt; a + b;</span><br><span class="line">              addition.operation(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">MathOperation</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">operation</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以通过增加参数，把动态生成的字节码打印成文件。利用-Djdk.internal.lambda.dumpProxyClasses。<br>利用类加载来打印类加载信息。-verbose:class。<br>打印aot的信息。-XX:+PrintAOT<br>把程序输出重定向到一个文件里去。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java  -verbose:class  -XX:+PrintAOT -Djdk.internal.lambda.dumpProxyClasses=.  -XX:AOTLibrary=./libtest.so,./libjava.base.so AotTest &gt; 1.txt</span><br></pre></td></tr></table></figure>
+<p>我把动态生成的字节码就放在当前路径了，我们可以看到文件夹下多了一个AotTest$$Lambda$1.class。<br>我们在日志中可以搜到类加载信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0.339s][info][class,load] AotTest$$Lambda$1/0x0000000800067840 source: AotTest</span><br></pre></td></tr></table></figure>
+<p>但是搜不到aot的信息。<br>说明aot本身对于动态生成的字节码无法预先处理，哪怕他是jdk的核心类库。</p>
+<h2 id="aot与动态注入"><a href="#aot与动态注入" class="headerlink" title="aot与动态注入"></a>aot与动态注入</h2><p>如果使用了-javaagent加入的监控修改了字节码会是什么表现呢？<br>我们使用了字节码注入的agent demo。下面是个开源版本。<br><a target="_blank" rel="noopener" href="https://github.com/xpbob/lightTrace">注入agent</a><br>这里一定要注意一个点，这个工具是通过asm做的，他可以打印方法的运行时间。<strong>使用时要把asm的jar包换成一个对应jdk的版本，目前项目用的6，java11得升级。</strong>否则你会发现神奇的错误，那个错误妙不可言。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xbootclasspath/a:asm-8.0.1.jar:asm-analysis-8.0.1.jar:asm-commons-8.0.1.jar:asm-tree-8.0.1.jar  -javaagent:trace-0.0.1-SNAPSHOT-agent.jar=Test -XX:AOTLibrary=./libtest.so -XX:+PrintAOT AotTest</span><br></pre></td></tr></table></figure>
+<p>通过这个启动参数。我这里只注入我的一个测试类。看看他的方法打印的结果，以及aot的表现。<br>加agent日志</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    179    1     aot[ 1]   AotTest.lambda$main$0(II)I</span><br><span class="line">    179    2     aot[ 1]   AotTest.()V</span><br><span class="line">this is TestB </span><br><span class="line">[Ljava.lang.String; main cost 0(这里是agent输出，单位是毫秒)</span><br></pre></td></tr></table></figure>
+<p>不加agent</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">     11    1     loaded    ./libtest.so  aot library</span><br><span class="line">    107    1     aot[ 1]   AotTest.lambda$main$0(II)I</span><br><span class="line">    107    2     aot[ 1]   AotTest.()V</span><br><span class="line">    107    3     aot[ 1]   AotTest.main([Ljava/lang/String;)V</span><br><span class="line">    108    4     aot[ 1]   TestB.()V</span><br><span class="line">    108    5     aot[ 1]   TestB.main([Ljava/lang/String;)V</span><br><span class="line">this is TestB</span><br></pre></td></tr></table></figure>
+<p>结果发现testB不见了，也就是说agent注入改造后的类是无法使用aot的效果的。</p>
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><hr>
+<h2 id="对核心类库编译"><a href="#对核心类库编译" class="headerlink" title="对核心类库编译"></a>对核心类库编译</h2><p>java核心类库可以说是调用比较频繁的代码，所以把核心类库进行编译，可以有效的提升启动速度。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jaotc --output libjava.base.so --module java.base</span><br></pre></td></tr></table></figure>
+<p>一般情况下，jdk是保证了核心类库的编译是没有问题的。上面的指令除非用的预览版本，那都是正常的。</p>
+<h2 id="合理设置参数"><a href="#合理设置参数" class="headerlink" title="合理设置参数"></a>合理设置参数</h2><p>jaotc可以使用-J指定运行时参数，官方的例子中使用了gc参数和压缩指针参数。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jaotc   -J-XX:-UseCompressedOops --output libtest.so AotTest.class</span><br></pre></td></tr></table></figure>
+<p>如果运行时没有-XX:-UseCompressedOops日志中会打印出一个异常。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Shared file ./libtest.so error: UseCompressedOops has different value &#x27;false&#x27; from current &#x27;true&#x27;</span><br><span class="line">    832    1     skipped ./libtest.so  aot library</span><br></pre></td></tr></table></figure>
+<p>gc的也同理。<br>哪些运行时参数是必须编译时就设置的，这个我自己测试了-Xmx这些，是可以运行的。现在发现的其实就是那两个参数，这个只能说实践中慢慢确认了。<br>这里也就是出现了一个问题，我们的程序不一定都要用G1，有的也需要使用ps，堆小的是需要开启压指针的，堆大的确实不需要。针对这种情况，我们能做的就是把情况和组合枚举一下，然后编译出多个版本，启动的时候指定不同的版本，官方就推荐这么做的，甚至他还举了例子。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-XX:-UseCompressedOops -XX:+UseG1GC :       libjava.base.so</span><br><span class="line">-XX:+UseCompressedOops -XX:+UseG1GC :       libjava.base-coop.so</span><br><span class="line">-XX:-UseCompressedOops -XX:+UseParallelGC : libjava.base-nong1.so</span><br><span class="line">-XX:+UseCompressedOops -XX:+UseParallelGC : libjava.base-coop-nong1.so</span><br></pre></td></tr></table></figure>
+<p>应该庆幸参数可能就这么少，如果运行时特别多的话，编译起来估计要疯的，得写脚本做循环遍历。然后用的时候得按照规则加载出合适的库，大部分时间都花在了脚本匹配上了，而且还得打开-XX:+PrintAOT，这个错误并不会让程序失败停止。还需要做日志分析。所以说这个用起来确认正确性还真是一个麻烦的事情。</p>
+<p>实战编译math3<br>我们下面编译math3来展示常用的方式。<br>我们先尝试编译</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jaotc  --output libmath.so --jar commons-math3-3.6.1.jar</span><br></pre></td></tr></table></figure>
+<p>你会发现这个会报错。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error: Failed compilation: org.apache.commons.math3.optim.nonlinear.scalar.noderiv.BOBYQAOptimizer.bobyqb([D[D)D: org.graalvm.compiler.core.common.PermanentBailoutException: Too many loops in method</span><br><span class="line">Error: Failed compilation: org.apache.commons.math3.optimization.direct.BOBYQAOptimizer.bobyqb([D[D)D: org.graalvm.compiler.core.common.PermanentBailoutException: Too many loops in method</span><br></pre></td></tr></table></figure>
+<p>这个情况是我们比较常见的，aot现在还不能匹配所有的场景。我们最简单的就是去掉这个，保证我们编译成功。我们可以使用exclude来去掉不可编译选项。<br>编写一个文件命名随意，我这里用 exclude.txt,把不能编译的方法都做一下去除。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exclude org.apache.commons.math3.optim.nonlinear.scalar.noderiv.BOBYQAOptimizer.bobyqb([D[D)D</span><br><span class="line">exclude org.apache.commons.math3.optimization.direct.BOBYQAOptimizer.bobyqb([D[D)D</span><br></pre></td></tr></table></figure>
+<p>这次尝试编译的话，我们使用–compile-commands把我们指定的规则加上去。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jaotc  --output libmath.so  --compile-commands  exclude.txt --jar commons-math3-3.6.1.jar</span><br></pre></td></tr></table></figure>
+<p>再次执行，可以生成对应的libmath.so。<br>exclude掉一些方法，只要那个不是什么热点方法，其实影响不会太大。我们只要保证大部分的，热点的代码，可以利用aot加速，程序的启动速度就会得到很大的提升。所以这里并不用太担心影响。<br>有exclude，所以同时也有compileOnly。目的就是比较好的选择出可以编译的选项。</p>
+<p><strong>常用参数</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--compile-for-tiered       Generate profiling code for tiered compilation</span><br></pre></td></tr></table></figure>
+<p>  在上面介绍的一些参数外，一般编译时还加上面这个参数。这个参数上标注了以后可能会去除，说明那时候aot有更好的解决方案了。在没有对应的解决方案出来时，先都加着吧。</p>
 
       
 
@@ -207,7 +314,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">aot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/jvm//" class="article-tag-list-link color4">jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -257,7 +386,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/10/17/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/11/05/aot%E5%AE%9E%E6%88%98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -271,15 +400,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/10/17/java-method-signature/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/12/25/heapdump/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          java-method-signature
+          heapdump
         
       </div>
     </a>
   
+  
+    <a href="/2021/10/31/jmx%E5%8A%A8%E6%80%81%E5%BC%80%E5%90%AF%E7%AB%AF%E5%8F%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jmx动态开启端口</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 

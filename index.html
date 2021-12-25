@@ -57,6 +57,10 @@
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
+				<li><a href="/categories">categories</a></li>
+	        
+				<li><a href="/tags">tags</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -113,6 +117,10 @@
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -130,12 +138,16 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 25%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 25%"><a href="/categories">categories</a></li>
+		        
+					<li style="width: 25%"><a href="/tags">tags</a></li>
 		        
 				</ul>
 			</nav>
@@ -151,6 +163,298 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-heapdump" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/25/heapdump/">heapdump</a>
+    </h1>
+  
+
+        
+        <a href="/2021/12/25/heapdump/" class="archive-article-date">
+  	<time datetime="2021-12-25T10:06:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>heapdump参数</p>
+<h1 id="heap-dump"><a href="#heap-dump" class="headerlink" title="heap dump"></a>heap dump</h1><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-XX:+HeapDumpOnOutOfMemoryError</td>
+<td>发生oome的时候触发heapdump</td>
+<td>false</td>
+</tr>
+<tr>
+<td>-XX:+HeapDumpBeforeFullGC</td>
+<td>发生fullgc之前触发heapdump</td>
+<td>false</td>
+</tr>
+<tr>
+<td>-XX:+HeapDumpAfterFullGC</td>
+<td>发生fullgc之后触发heapdump</td>
+<td>false</td>
+</tr>
+<tr>
+<td>-XX:HeapDumpPath</td>
+<td>heapdump的路径，可以写路径或者文件名,路径一定要存在</td>
+<td><code>java_pid&lt;pid&gt;.hprof</code></td>
+</tr>
+</tbody></table>
+<h1 id="jinfo动态设置"><a href="#jinfo动态设置" class="headerlink" title="jinfo动态设置"></a>jinfo动态设置</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jinfo -flag HeapDumpAfterFullGC=true pid</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jinfo -flag [+|-]HeapDumpAfterFullGC pid</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">heapdump</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/jvm//" class="article-tag-list-link color4">jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/12/25/heapdump/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-aot实战" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/05/aot%E5%AE%9E%E6%88%98/">aot实战</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/05/aot%E5%AE%9E%E6%88%98/" class="archive-article-date">
+  	<time datetime="2021-11-05T14:54:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="aot介绍"><a href="#aot介绍" class="headerlink" title="aot介绍"></a>aot介绍</h1><hr>
+<p>aot是Ahead-Of-Time的缩写，以前大家都知道java的一个定位就是半编译，半解释型语言。他把java文件编译成class文件，最后jvm解释执行class文件，jvm可以把class文件解释为对应的机器码，这个就是靠的jit。aot则是直接把class文件编译系统的库文件，不在依靠jit去做这个事情。</p>
+        
+          <a class="article-more-a" href="/2021/11/05/aot%E5%AE%9E%E6%88%98/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">aot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/jvm//" class="article-tag-list-link color4">jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/05/aot%E5%AE%9E%E6%88%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="tools-jmx动态开启端口" class="article article-type-tools  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/31/jmx%E5%8A%A8%E6%80%81%E5%BC%80%E5%90%AF%E7%AB%AF%E5%8F%A3/">jmx动态开启端口</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/31/jmx%E5%8A%A8%E6%80%81%E5%BC%80%E5%90%AF%E7%AB%AF%E5%8F%A3/" class="archive-article-date">
+  	<time datetime="2021-10-31T14:22:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>java可以利用编写mbeans来暴露很多程序指标，jdk自己也有很多指标，例如内存使用以及划分。很多小伙伴都表示这些值不少jstat就可以获取查看的吗，ssh登录上去就可以，也很方便。jstat确实不错，但是他在内存的信息暴露上是缺失的，<strong>没有直接内存的使用</strong>。在现在的程序中，直接内存的使用已经不是什么稀有操作了。我们应该如何查看呢？<br>jmx暴露了这个指标。很多程序的指标也在这里暴露，例如spark等等，这里不在列举jmx的优点。</p>
+        
+          <a class="article-more-a" href="/2021/10/31/jmx%E5%8A%A8%E6%80%81%E5%BC%80%E5%90%AF%E7%AB%AF%E5%8F%A3/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jmx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/jvm//" class="article-tag-list-link color4">jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/31/jmx%E5%8A%A8%E6%80%81%E5%BC%80%E5%90%AF%E7%AB%AF%E5%8F%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-java11-gc-log" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -288,7 +592,33 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jdk11</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gclog</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/jvm//" class="article-tag-list-link color4">jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -602,6 +932,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jmx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">aot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">heapdump</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">jdk11</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">gclog</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
