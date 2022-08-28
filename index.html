@@ -164,6 +164,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-java与容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/13/java%E4%B8%8E%E5%AE%B9%E5%99%A8/">java与容器</a>
+    </h1>
+  
+
+        
+        <a href="/2022/08/13/java%E4%B8%8E%E5%AE%B9%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2022-08-13T07:42:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="java与容器相关配置"><a href="#java与容器相关配置" class="headerlink" title="java与容器相关配置"></a>java与容器相关配置</h3><p><strong>这里的容器是一个代称包含cgroup,docker等。</strong></p>
+<h2 id="java在容器环境的问题"><a href="#java在容器环境的问题" class="headerlink" title="java在容器环境的问题"></a>java在容器环境的问题</h2><p>一个在物理机上跑的很好的java程序，如果用的jdk8u131之前的版本，加上容器限制后，可能会出现奇奇怪怪的问题，有的会启动失败，有的线程数远远超过限制的核数，cpu飙高。究其原因，本质是jvm的默认配置所致。</p>
+<ol>
+<li>与cpu相关的默认配置。如gc线程数，jit线程数，forkjoin并发度等。 </li>
+<li>与内存相关的默认配置。如heap，direct memory等。</li>
+</ol>
+<p>下面主要围绕cpu，内存展开。</p>
+        
+          <a class="article-more-a" href="/2022/08/13/java%E4%B8%8E%E5%AE%B9%E5%99%A8/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/jvm//" class="article-tag-list-link color4">jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/13/java%E4%B8%8E%E5%AE%B9%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-jstack-Unable-to-open-socket-file" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1021,18 +1103,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jmx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">aot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">heapdump</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jdk11</a>
               </li>
              
@@ -1041,7 +1111,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jmx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">aot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">heapdump</a>
               </li>
             
             <div class="clearfix"></div>
