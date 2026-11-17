@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2561f"/>
+      <stop offset="1" stop-color="#f7a13c"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" fill="none" stroke="#33271d" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.5" cy="0" r="0.8">
+      <stop offset="0" stop-color="#ef8b2c" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#ef8b2c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#17120e"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity=".5"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#acc)"/>
+
+  <g transform="translate(88 200)">
+    <rect x="0" y="-104" width="164" height="34" rx="17" fill="#2a1a12" stroke="#3d2517"/>
+    <circle cx="20" cy="-87" r="5" fill="#ff9a6b"/>
+    <text x="36" y="-79" font-family="-apple-system,PingFang SC,sans-serif" font-size="16"
+          fill="#ffb98f" font-weight="600">OpenJDK Author</text>
+
+    <text font-family="-apple-system,PingFang SC,sans-serif" font-size="62" font-weight="800"
+          fill="#f2ece5" letter-spacing="-2">把线上疑难问题</text>
+    <text y="82" font-family="-apple-system,PingFang SC,sans-serif" font-size="62" font-weight="800"
+          fill="url(#acc)" letter-spacing="-2">定位到根因</text>
+  </g>
+
+  <text x="88" y="452" font-family="-apple-system,PingFang SC,sans-serif" font-size="22"
+        fill="#a2968a">JVM 内存与 GC · CPU 与采样分析 · eBPF 系统级观测</text>
+
+  <text x="88" y="548" font-family="ui-monospace,Menlo,monospace" font-size="24"
+        fill="#7a6f64">xpbob.site</text>
+</svg>

@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getAllPosts } from '../../lib/posts';
+import { absoluteUrl, breadcrumbJsonLd } from '../../lib/seo';
+
+const posts = await getAllPosts();
+---
+
+<BaseLayout
+  title="全部文章"
+  description="Java 疑难问题诊断的深度排障长文：GC 与内存、CPU 采样分析、eBPF 系统级观测。"
+  canonicalPath="/posts/"
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: '首页', path: '/' },
+      { name: '文章', path: '/posts/' },
+    ]),
+    {
+      '@type': 'CollectionPage',
+      name: '全部文章',
+      url: absoluteUrl('/posts/'),
+      hasPart: posts.slice(0, 30).map((p) => ({
+        '@type': 'Article',
+        headline: p.data.title,
+        url: absoluteUrl(`/posts/${p.data.slug}/`),
+        datePublished: p.data.date.toISOString(),
+      })),
+    },
+  ]}
+>
+  <div class="wrap">
+    <header class="page-head">
+      <nav class="crumb" aria-label="面包屑">
+        <a href="/">首页</a>
+        <span aria-hidden="true">/</span>
+        <span>文章</span>
+      </nav>
+      <h1>全部文章</h1>
+      <p>共 {posts.length} 篇。每一篇都从真实的线上问题出发，给出可复现的排查路径。</p>
+    </header>
+
+    {posts.length > 0 ? (
+      <div class="grid grid-2" style="padding:32px 0 60px">
+        {posts.map((post) => <PostCard post={post} />)}
+      </div>
+    ) : (
+      <div class="empty" style="margin:32px 0 60px">
+        <p>还没有已发布的文章。</p>
+      </div>
+    )}
+  </div>
+</BaseLayout>

@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCategories } from '../../lib/posts';
+import { breadcrumbJsonLd } from '../../lib/seo';
+
+const categories = await getCategories();
+---
+
+<BaseLayout
+  title="分类"
+  description="按主题浏览：JVM 内存与 GC、CPU 与采样分析、eBPF 系统观测等。"
+  canonicalPath="/categories/"
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: '首页', path: '/' },
+      { name: '分类', path: '/categories/' },
+    ]),
+  ]}
+>
+  <div class="wrap">
+    <header class="page-head">
+      <nav class="crumb" aria-label="面包屑">
+        <a href="/">首页</a>
+        <span aria-hidden="true">/</span>
+        <span>分类</span>
+      </nav>
+      <h1>分类</h1>
+      <p>按主题聚合的文章入口。想系统学习某个方向时，从这里进最快。</p>
+    </header>
+
+    {categories.length > 0 ? (
+      <div class="grid grid-3" style="padding:32px 0 60px">
+        {categories.map((c) => (
+          <a class="cat-card" href={`/categories/${c.slug}/`}>
+            <span class="name">{c.name}</span>
+            <span class="count">{c.count} 篇文章</span>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="empty" style="margin:32px 0 60px"><p>暂无分类。</p></div>
+    )}
+  </div>
+</BaseLayout>

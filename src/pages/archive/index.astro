@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getArchive, readingMinutes } from '../../lib/posts';
+import { breadcrumbJsonLd } from '../../lib/seo';
+
+const archive = await getArchive();
+const total = archive.reduce((n, y) => n + y.posts.length, 0);
+
+const fmt = new Intl.DateTimeFormat('zh-CN', { month: '2-digit', day: '2-digit' });
+const md = (d: Date) => fmt.format(d).replace(/\//g, '-');
+---
+
+<BaseLayout
+  title="归档"
+  description="按时间归档的全部文章。"
+  canonicalPath="/archive/"
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: '首页', path: '/' },
+      { name: '归档', path: '/archive/' },
+    ]),
+  ]}
+>
+  <div class="wrap">
+    <header class="page-head">
+      <nav class="crumb" aria-label="面包屑">
+        <a href="/">首页</a>
+        <span aria-hidden="true">/</span>
+        <span>归档</span>
+      </nav>
+      <h1>归档</h1>
+      <p>共 {total} 篇文章，跨 {archive.length} 个年份。</p>
+    </header>
+
+    <div style="padding:32px 0 60px">
+      {archive.map((group) => (
+        <section class="year">
+          <h2 class="year-head">
+            <span class="y">{group.year}</span>
+            <span class="c">{group.posts.length} 篇</span>
+          </h2>
+          <div class="list">
+            {group.posts.map((post) => (
+              <a class="row" href={`/posts/${post.data.slug}/`}>
+                <time datetime={post.data.date.toISOString()}>{md(post.data.date)}</time>
+                <span class="row-title">{post.data.title}</span>
+                <span class="row-meta">
+                  {readingMinutes(post)} 分钟 · {post.data.category}
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      {archive.length === 0 && (
+        <div class="empty"><p>还没有已发布的文章。</p></div>
+      )}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .year + .year { margin-top: 34px; }
+
+  .year-head {
+    display: flex;
+    align-items: baseline;
+    gap: 11px;
+    margin-bottom: 12px;
+  }
+
+  .year-head .y {
+    font-family: var(--mono);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .year-head .c { font-size: 12.5px; color: var(--faint); }
+</style>

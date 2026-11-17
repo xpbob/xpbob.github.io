@@ -1,0 +1,225 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SITE } from '../lib/site';
+import { canonicalFor, jsonLdGraph, mediaUrl, websiteJsonLd, personJsonLd } from '../lib/seo';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** 覆盖 canonical 路径（默认取当前 URL） */
+  canonicalPath?: string;
+  /** 聚合页索引策略：true 时输出 noindex,follow */
+  noindex?: boolean;
+  ogType?: 'website' | 'article';
+  ogImage?: string;
+  /** 额外的 JSON-LD 节点，会自动并入 @graph */
+  jsonLd?: Record<string, unknown>[];
+  /** 有正文时挂阅读进度条与停留埋点 */
+  article?: boolean;
+  postId?: number | string;
+}
+
+const {
+  title,
+  description = SITE.author.description,
+  canonicalPath,
+  noindex = false,
+  ogType = 'website',
+  ogImage,
+  jsonLd = [],
+  article = false,
+  postId,
+} = Astro.props;
+
+const pageTitle = title ? `${title} · ${SITE.title}` : `${SITE.title} · Java 疑难问题诊断`;
+/**
+ * 分享卡片用不带站名后缀的标题。
+ * `<title>` 需要站名做区分（多标签页、搜索结果里的站点归属），但 og:title /
+ * twitter:title 已经有独立的 og:site_name，再拼一遍等于把站名占掉标题的篇幅，
+ * 微信、X 这类卡片上会挤成两行还断得很难看。
+ */
+const shareTitle = title || pageTitle;
+const path = canonicalPath ?? Astro.url.pathname;
+const canonical = canonicalFor(path);
+const ogImageUrl = mediaUrl(ogImage) ?? `${SITE.url}/og-default.svg`;
+
+// 首页额外挂 WebSite + Person 实体，其余页面按需传入
+const graph = jsonLdGraph([websiteJsonLd(), personJsonLd(), ...jsonLd]);
+
+/**
+ * 埋点上报地址。留空即**关闭**埋点（GitHub Pages 无后端，POST 会 404）。
+ * 不设默认值：搬迁到纯静态托管后，唯一的正确默认行为是不发请求。
+ */
+const trackEndpoint = import.meta.env.PUBLIC_TRACK_ENDPOINT || '';
+const googleVerify = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const baiduVerify = import.meta.env.PUBLIC_BAIDU_SITE_VERIFICATION;
+const bingVerify = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- canonical：自指、去 query（PRD R-07 要求全站正确率 100%） -->
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+
+    {/* 不放 rel="alternate" feed：站点已下线 RSS/Atom/邮件通道，只保留搜索引擎索引 */}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:title" content={shareTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="zh_CN" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={shareTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    {googleVerify && <meta name="google-site-verification" content={googleVerify} />}
+    {baiduVerify && <meta name="baidu-site-verification" content={baiduVerify} />}
+    {bingVerify && <meta name="msvalidate.01" content={bingVerify} />}
+
+    {/* 图标：火焰（HotSpot 双关 + 品牌暖色）。ico 兜底旧浏览器与 Windows 快捷方式，
+        svg 供现代浏览器，apple-touch-icon 供 iOS 主屏。三者同一份造型，改一个要改全部。
+        ?v=2：favicon 的缓存极其顽固，换图不加版本号老用户会一直看到旧图。换图就 +1。 */}
+    <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+    <meta name="theme-color" content="#c8441a" />
+
+    <!-- 结构化数据：@graph 一次承载 -->
+    <script type="application/ld+json" set:html={JSON.stringify(graph)} />
+
+    <!-- 主题预置，避免深色模式闪白 -->
+    <meta name="color-scheme" content="light dark" />
+  </head>
+
+  <body>
+    {/* 阅读进度条（仅文章页） */}
+    {article && <div class="progress" id="read-progress" aria-hidden="true"></div>}
+
+    <SiteHeader />
+    <main data-post-id={postId}>
+      <slot />
+    </main>
+    <SiteFooter />
+
+    {/* 移动端底部导航 */}
+    <nav class="mobile-nav" aria-label="移动端导航">
+      {SITE.nav.map((item) => (
+        <a href={item.href} aria-current={Astro.url.pathname.startsWith(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <script define:vars={{ trackEndpoint }}>
+      /* ── 轻量埋点：sendBeacon → trackEndpoint ─────────────────────
+         渐进增强：脚本失败或缺席时页面功能完全不受影响。
+         事件与 PRD §5 埋点清单一致，落 page_view / track_event 两表。
+
+         当前部署在 GitHub Pages（纯静态），PUBLIC_TRACK_ENDPOINT 未配置，
+         下面会直接 return —— 页面不产生任何上报请求。 */
+      (function () {
+        if (navigator.doNotTrack === '1') return;
+
+        var KEY = 'xpbob_vid';
+        var vid;
+        try {
+          vid = localStorage.getItem(KEY);
+          if (!vid) {
+            vid = (crypto.randomUUID && crypto.randomUUID()) ||
+                  (Date.now().toString(36) + Math.random().toString(36).slice(2, 10));
+            localStorage.setItem(KEY, vid);
+          }
+        } catch (e) {
+          vid = 'anon';
+        }
+
+        /* 未配置上报地址（纯静态托管）→ 整段埋点直接退出，不产生任何请求。 */
+        var endpoint = trackEndpoint;
+        if (!endpoint) return;
+        var sent = {};
+
+        function channel() {
+          var r = document.referrer || '';
+          if (!r) return 'direct';
+          try {
+            var h = new URL(r).hostname;
+            if (h === location.hostname) return 'internal';
+            if (/baidu\.|bing\.|google\.|so\.|sogou\.|sm\.cn/.test(h)) return 'organic-search';
+            if (/weixin|qq\.com|juejin|zhihu|weibo|twitter|x\.com/.test(h)) return 'social';
+          } catch (e) { /* ignore */ }
+          return 'referral';
+        }
+
+        function send(eventName, props) {
+          if (sent[eventName]) return;
+          sent[eventName] = true;
+          var payload = {
+            event_name: eventName,
+            visitor_id: vid,
+            path: location.pathname,
+            referer: document.referrer || null,
+            channel: channel(),
+            props: props || null
+          };
+          var body = JSON.stringify(payload);
+          try {
+            if (navigator.sendBeacon) {
+              navigator.sendBeacon(endpoint, new Blob([body], { type: 'application/json' }));
+              return;
+            }
+          } catch (e) { /* fallthrough */ }
+          try {
+            fetch(endpoint, { method: 'POST', body: body, keepalive: true, headers: { 'Content-Type': 'application/json' } });
+          } catch (e) { /* silent */ }
+        }
+
+        var root = document.querySelector('main');
+        var pid = root && root.getAttribute('data-post-id');
+        send('pageview', pid ? { post_id: pid } : null);
+
+        if (!pid) return;
+
+        // 停留 ≥30s：北极星 WAR 的判定条件
+        setTimeout(function () { send('read_30s', { post_id: pid }); }, 30000);
+
+        // 滚动 ≥75%
+        var onScroll = function () {
+          var h = document.documentElement.scrollHeight - window.innerHeight;
+          if (h <= 0 || window.scrollY / h >= 0.75) {
+            send('read_75', { post_id: pid });
+            window.removeEventListener('scroll', onScroll);
+          }
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // 阅读进度条
+        var bar = document.getElementById('read-progress');
+        if (bar) {
+          var tick = function () {
+            var h = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = (h <= 0 ? 100 : Math.min(100, (window.scrollY / h) * 100)) + '%';
+          };
+          window.addEventListener('scroll', tick, { passive: true });
+          tick();
+        }
+      })();
+    </script>
+  </body>
+</html>

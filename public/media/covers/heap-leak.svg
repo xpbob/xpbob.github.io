@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#acc)"/>
+
+  <text x="80" y="140" font-family="-apple-system,PingFang SC,sans-serif" font-size="20"
+        fill="#818cf8" font-weight="600">JVM 内存与 GC</text>
+
+  <text x="80" y="220" font-family="-apple-system,PingFang SC,sans-serif" font-size="52"
+        font-weight="800" fill="#e8ecf5" letter-spacing="-1.5">百 G 堆泄漏</text>
+  <text y="290" x="80" font-family="-apple-system,PingFang SC,sans-serif" font-size="52"
+        font-weight="800" fill="url(#acc)" letter-spacing="-1.5">三段式定位</text>
+
+  <!-- 阶梯式上涨的水位示意 -->
+  <g transform="translate(80 366)" fill="none" stroke-linecap="round">
+    <path d="M0 120 L120 96 L150 118 L270 84 L300 106 L420 62 L450 84 L570 38 L600 60 L720 14"
+          stroke="url(#acc)" stroke-width="4"/>
+    <path d="M0 120 L120 96 L150 118 L270 84 L300 106 L420 62 L450 84 L570 38 L600 60 L720 14 L720 150 L0 150 Z"
+          fill="#4f46e5" fill-opacity=".12" stroke="none"/>
+  </g>
+  <g transform="translate(80 366)" stroke="#1e293b" stroke-width="1">
+    <path d="M0 150H740"/>
+  </g>
+
+  <text x="80" y="576" font-family="ui-monospace,Menlo,monospace" font-size="22" fill="#475569">
+    xpbob.site</text>
+</svg>

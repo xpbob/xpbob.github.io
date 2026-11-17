@@ -1,0 +1,28 @@
+---
+import { SITE } from '../lib/site';
+import SearchBox from './SearchBox.astro';
+
+const current = Astro.url.pathname;
+
+const isActive = (href: string) =>
+  href === '/' ? current === '/' || current === '' : current.startsWith(href);
+---
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="mark" aria-hidden="true"></span>
+      <span>{SITE.title}</span>
+    </a>
+
+    <nav class="nav" aria-label="主导航">
+      {SITE.nav.map((item) => (
+        <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </nav>
+
+    <span class="head-grow"></span>
+
+    <SearchBox />
+  </div>
+</header>

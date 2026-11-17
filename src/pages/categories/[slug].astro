@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getCategories } from '../../lib/posts';
+import { breadcrumbJsonLd } from '../../lib/seo';
+
+export async function getStaticPaths() {
+  const categories = await getCategories();
+  return categories.map((c) => ({
+    params: { slug: c.slug },
+    props: { category: c },
+  }));
+}
+
+const { category } = Astro.props;
+
+// 分类页承担「主题落地页」角色：恒定可索引 + 自指 canonical（PRD §7）
+---
+
+<BaseLayout
+  title={`${category.name} 分类`}
+  description={`${category.name} 主题下的 ${category.count} 篇文章：Java 疑难问题诊断与排查实践。`}
+  canonicalPath={`/categories/${category.slug}/`}
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: '首页', path: '/' },
+      { name: '分类', path: '/categories/' },
+      { name: category.name, path: `/categories/${category.slug}/` },
+    ]),
+  ]}
+>
+  <div class="wrap">
+    <header class="page-head">
+      <nav class="crumb" aria-label="面包屑">
+        <a href="/">首页</a>
+        <span aria-hidden="true">/</span>
+        <a href="/categories/">分类</a>
+        <span aria-hidden="true">/</span>
+        <span>{category.name}</span>
+      </nav>
+      <h1>{category.name}</h1>
+      <p>该主题下共 {category.count} 篇文章，按发布时间倒序。</p>
+    </header>
+
+    <div class="grid grid-2" style="padding:32px 0 60px">
+      {category.posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </div>
+</BaseLayout>

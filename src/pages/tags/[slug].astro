@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getTags } from '../../lib/posts';
+import { TAG_INDEX_THRESHOLD } from '../../lib/site';
+import { breadcrumbJsonLd } from '../../lib/seo';
+
+export async function getStaticPaths() {
+  const tags = await getTags();
+  return tags.map((t) => ({
+    params: { slug: t.slug },
+    props: { tag: t },
+  }));
+}
+
+const { tag } = Astro.props;
+
+// 聚合页索引策略（PRD §7）：默认 noindex,follow；文章数 ≥ 阈值自动转为可索引。
+// 该状态在构建期由文章数决定，发布/下线后重新构建即自动翻转。
+const noindex = !tag.indexable;
+---
+
+<BaseLayout
+  title={`${tag.name} 标签`}
+  description={`标签「${tag.name}」下的 ${tag.count} 篇文章：Java 疑难问题诊断与排查实践。`}
+  canonicalPath={`/tags/${tag.slug}/`}
+  noindex={noindex}
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: '首页', path: '/' },
+      { name: '标签', path: '/tags/' },
+      { name: tag.name, path: `/tags/${tag.slug}/` },
+    ]),
+  ]}
+>
+  <div class="wrap">
+    <header class="page-head">
+      <nav class="crumb" aria-label="面包屑">
+        <a href="/">首页</a>
+        <span aria-hidden="true">/</span>
+        <a href="/tags/">标签</a>
+        <span aria-hidden="true">/</span>
+        <span>{tag.name}</span>
+      </nav>
+      <h1>#{tag.name}</h1>
+      <p>
+        该标签下共 {tag.count} 篇文章。
+        {noindex
+          ? `文章数未达 ${TAG_INDEX_THRESHOLD} 篇，本页暂不被搜索引擎索引。`
+          : '本页已被搜索引擎索引。'}
+      </p>
+    </header>
+
+    <div class="grid grid-2" style="padding:32px 0 60px">
+      {tag.posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </div>
+</BaseLayout>

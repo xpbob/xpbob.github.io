@@ -1,0 +1,38 @@
+---
+import type { Post } from '../lib/posts';
+import { readingMinutes } from '../lib/posts';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const { data } = post;
+
+const fmt = new Intl.DateTimeFormat('zh-CN', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+});
+
+const dateText = fmt.format(data.date).replace(/\//g, '-');
+---
+
+<article class="card">
+  <a href={`/posts/${data.slug}/`} aria-label={data.title}>
+    <span class="cat">{data.series || data.category}</span>
+    <h3>{data.title}</h3>
+    <p>{data.summary}</p>
+  </a>
+  <div class="meta">
+    <time datetime={data.date.toISOString()}>{dateText}</time>
+    <span class="dot" aria-hidden="true"></span>
+    <span>{readingMinutes(post)} 分钟</span>
+    {data.tags.length > 0 && (
+      <>
+        <span class="dot" aria-hidden="true"></span>
+        <span>{data.tags.slice(0, 2).map((t) => `#${t}`).join(' ')}</span>
+      </>
+    )}
+  </div>
+</article>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" width="900" height="380"
+     role="img" aria-label="off-CPU 与 CPU 混合火焰图示例">
+  <defs>
+    <linearGradient id="on" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="off" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0891b2"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="380" fill="#0f172a" rx="14"/>
+
+  <text x="28" y="40" font-family="-apple-system,PingFang SC,sans-serif" font-size="15"
+        fill="#94a3b8">混合火焰图：上方 CPU&#160;时间，下方 off-CPU 时间</text>
+
+  <!-- 上半：CPU 时间（自下而上堆栈） -->
+  <g transform="translate(60 178)">
+    <rect x="0" y="-30" width="780" height="26" rx="4" fill="url(#on)" opacity=".95"/>
+    <text x="12" y="-12" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#0b1020">main</text>
+
+    <rect x="0" y="-60" width="330" height="26" rx="4" fill="url(#on)" opacity=".85"/>
+    <text x="12" y="-42" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#0b1020">parseRequest</text>
+
+    <rect x="340" y="-60" width="440" height="26" rx="4" fill="url(#on)" opacity=".85"/>
+    <text x="352" y="-42" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#0b1020">serializeResponse</text>
+
+    <rect x="0" y="-90" width="180" height="26" rx="4" fill="url(#on)" opacity=".72"/>
+    <text x="12" y="-72" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#0b1020">decodeJson</text>
+
+    <rect x="188" y="-90" width="132" height="26" rx="4" fill="url(#on)" opacity=".72"/>
+    <text x="200" y="-72" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#0b1020">validate</text>
+
+    <rect x="620" y="-90" width="160" height="26" rx="4" fill="url(#on)" opacity=".72"/>
+    <text x="632" y="-72" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#0b1020">writeBytes</text>
+  </g>
+
+  <!-- 分界线 -->
+  <path d="M60 178H840" stroke="#334155" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- 下半：off-CPU（自下而上，镜像） -->
+  <g transform="translate(60 208)">
+    <rect x="0" y="0" width="780" height="26" rx="4" fill="url(#off)" opacity=".95"/>
+    <text x="12" y="18" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#04202b">main</text>
+
+    <rect x="60" y="30" width="300" height="26" rx="4" fill="url(#off)" opacity=".85"/>
+    <text x="72" y="48" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#04202b">socketRead</text>
+
+    <rect x="420" y="30" width="300" height="26" rx="4" fill="url(#off)" opacity=".85"/>
+    <text x="432" y="48" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#04202b">futex_wait</text>
+
+    <rect x="60" y="60" width="150" height="26" rx="4" fill="url(#off)" opacity=".7"/>
+    <text x="72" y="78" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#04202b">tcp_recvmsg</text>
+
+    <rect x="218" y="60" width="142" height="26" rx="4" fill="url(#off)" opacity=".7"/>
+    <text x="230" y="78" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#04202b">ep_poll</text>
+
+    <rect x="420" y="60" width="300" height="26" rx="4" fill="url(#off)" opacity=".7"/>
+    <text x="432" y="78" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#04202b">JavaMonitorEnter</text>
+  </g>
+
+  <text x="60" y="348" font-family="ui-monospace,Menlo,monospace" font-size="13"
+        fill="#64748b">offcputime-bpfcc -f 30 → flamegraph.pl</text>
+</svg>

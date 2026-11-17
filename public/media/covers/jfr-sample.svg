@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#acc)"/>
+
+  <text x="80" y="140" font-family="-apple-system,PingFang SC,sans-serif" font-size="20"
+        fill="#22d3ee" font-weight="600">CPU 与采样分析</text>
+
+  <text x="80" y="220" font-family="-apple-system,PingFang SC,sans-serif" font-size="52"
+        font-weight="800" fill="#e8ecf5" letter-spacing="-1.5">JFR 采样偏差</text>
+  <text y="290" x="80" font-family="-apple-system,PingFang SC,sans-serif" font-size="52"
+        font-weight="800" fill="url(#acc)" letter-spacing="-1.5">为什么更慢反而采得多</text>
+
+  <g transform="translate(80 372)">
+    <rect width="180" height="12" rx="6" fill="url(#acc)"/>
+    <text y="44" font-family="ui-monospace,Menlo,monospace" font-size="19" fill="#94a3b8">2 核</text>
+  </g>
+  <g transform="translate(80 462)">
+    <rect width="46" height="12" rx="6" fill="#334155"/>
+    <text y="44" font-family="ui-monospace,Menlo,monospace" font-size="19" fill="#94a3b8">0.5 核 · cpu.max 节流</text>
+  </g>
+
+  <text x="80" y="576" font-family="ui-monospace,Menlo,monospace" font-size="22" fill="#475569">
+    xpbob.site</text>
+</svg>

@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import AuthorCard from '../components/AuthorCard.astro';
+import { getAllPosts, getSeriesGroups, getCategories, getTags, readingMinutes, toSlug } from '../lib/posts';
+import { absoluteUrl, breadcrumbJsonLd } from '../lib/seo';
+
+const posts = await getAllPosts();
+const groups = await getSeriesGroups(3);
+const categories = await getCategories();
+const tags = await getTags();
+
+// 首屏信任信号全部构建期算，不写死 —— 以前写死 9，发到第 11 篇就过时了。
+// 不放「N 年经验」这类自我宣称，改用可核对的内容规模。
+const stats = [
+  { label: '深度排障长文', value: String(posts.length) },
+  { label: '主题分类', value: String(categories.length) },
+];
+
+// 最近更新：首页只列前 6 条
+const recent = posts.slice(0, 6);
+
+// 首页的 ItemList：把精选长文显式喂给搜索引擎
+// （WebSite / Person 实体已由 BaseLayout 统一注入，此处不重复）
+const featured = groups.flatMap((g) => g.posts).slice(0, 10);
+const itemList = {
+  '@type': 'ItemList',
+  name: '精选排障长文',
+  itemListElement: featured.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: absoluteUrl(`/posts/${p.data.slug}/`),
+    name: p.data.title,
+  })),
+};
+
+const fmt = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' });
+const dateText = (d: Date) => fmt.format(d).replace(/\//g, '-');
+---
+
+<BaseLayout
+  description="Java 疑难问题诊断：JVM 内存与 GC、CPU 高频与采样分析、eBPF 系统级观测。OpenJDK Author，只写能复现、能落地的排障方法。"
+  canonicalPath="/"
+  jsonLd={[itemList, breadcrumbJsonLd([{ name: '首页', path: '/' }])]}
+>
+  <!-- ══════════ Hero：左「我是谁、能解决什么」，右作者名片 ══════════ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-in">
+        <div class="hero-copy">
+          <span class="eyebrow">
+            <span class="pulse" aria-hidden="true"></span>
+            eBPF × JVM 双栈诊断
+          </span>
+
+          <h1>
+            把线上疑难问题，<br />
+            定位到<span class="grad">根因</span>
+          </h1>
+
+          <p class="lede">
+            OpenJDK Author，专注软件问题诊断：GC 与内存疑难、CPU 高频与采样分析、eBPF 系统级观测。
+            这里只写能复现、能落地的排查路径。
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-grad" href="/posts/">开始阅读文章 →</a>
+            <a class="btn" href="/about/">关于我</a>
+          </div>
+
+          <div class="hero-stats">
+            {stats.map((s) => (
+              <div class="stat">
+                <span class="num">{s.value}</span>
+                <span class="lbl">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <AuthorCard />
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 精选长文：按主题分组 ══════════ -->
+  {groups.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>精选长文</h2>
+          <span class="hint">按主题分组 · 每篇都能照着做</span>
+        </div>
+
+        <div class="groups">
+          {groups.map((group) => (
+            <div class="group">
+              <div class="group-head">
+                <h3>{group.name}</h3>
+                <a class="more" href={`/categories/${toSlug(group.name)}/`}>全部 →</a>
+              </div>
+              <div class="grid grid-3">
+                {group.posts.map((post) => <PostCard post={post} />)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ══════════ 最近更新 ══════════ -->
+  {recent.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>最近更新</h2>
+          <a class="more" href="/archive/">查看归档 →</a>
+        </div>
+
+        <div class="list">
+          {recent.map((post) => (
+            <a class="row" href={`/posts/${post.data.slug}/`}>
+              <time datetime={post.data.date.toISOString()}>{dateText(post.data.date)}</time>
+              <span class="row-title">{post.data.title}</span>
+              <span class="row-meta">
+                {readingMinutes(post)} 分钟 · {post.data.category}
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 内容为空时的引导（迁移前兜底） -->
+  {posts.length === 0 && (
+    <section class="section">
+      <div class="wrap">
+        <div class="empty">
+          <p>还没有已发布的文章。把 Markdown 放进 <code>src/content/posts/</code> 即可自动上线。</p>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ══════════ 按主题探索 ══════════ -->
+  {(categories.length > 0 || tags.length > 0) && (
+    <section class="section">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>按主题探索</h2>
+          <span class="hint">搜到具体问题时，从主题入口更快</span>
+        </div>
+
+        {categories.length > 0 && (
+          <div class="grid grid-3" style="margin-bottom:26px">
+            {categories.map((c) => (
+              <a class="cat-card" href={`/categories/${c.slug}/`}>
+                <span class="name">{c.name}</span>
+                <span class="count">{c.count} 篇文章</span>
+              </a>
+            ))}
+          </div>
+        )}
+
+        {tags.length > 0 && (
+          <div class="tags">
+            {tags.slice(0, 16).map((t) => (
+              <a class="tag" href={`/tags/${t.slug}/`} data-noindex={String(!t.indexable)}>
+                {t.name}
+                <span class="n">{t.count}</span>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  /* 首页专属：主题分组之间的节奏 */
+  .groups {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+  }
+
+  .group-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 15px;
+  }
+
+  .group-head h3 {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -.015em;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .group-head h3::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  }
+
+  .group-head .more {
+    font-size: 12.5px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTags } from '../../lib/posts';
+import { TAG_INDEX_THRESHOLD, SITE } from '../../lib/site';
+import { breadcrumbJsonLd } from '../../lib/seo';
+
+const tags = await getTags();
+const indexableCount = tags.filter((t) => t.indexable).length;
+---
+
+<BaseLayout
+  title="标签"
+  description="按标签浏览文章。文章数达到阈值的标签页可被搜索引擎索引。"
+  canonicalPath="/tags/"
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: '首页', path: '/' },
+      { name: '标签', path: '/tags/' },
+    ]),
+  ]}
+>
+  <div class="wrap">
+    <header class="page-head">
+      <nav class="crumb" aria-label="面包屑">
+        <a href="/">首页</a>
+        <span aria-hidden="true">/</span>
+        <span>标签</span>
+      </nav>
+      <h1>标签</h1>
+      <p>
+        共 {tags.length} 个标签，其中 {indexableCount} 个已转为可索引。
+        文章数少于 {TAG_INDEX_THRESHOLD} 篇的标签页标记为 <code>noindex</code>，避免薄内容稀释正文收录。
+      </p>
+    </header>
+
+    {tags.length > 0 ? (
+      <div class="tags" style="padding:32px 0 60px">
+        {tags.map((t) => (
+          <a class="tag" href={`/tags/${t.slug}/`} data-noindex={String(!t.indexable)}>
+            {t.name}
+            <span class="n">{t.count}</span>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="empty" style="margin:32px 0 60px"><p>暂无标签。</p></div>
+    )}
+  </div>
+</BaseLayout>

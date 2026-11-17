@@ -1,0 +1,66 @@
+name: Deploy to GitHub Pages
+
+# 只在主干 push 与手动触发时跑。
+# 不强绑 pull_request：PR 阶段不需要发布，省 Actions 额度。
+on:
+  push:
+    branches: [master, main]
+  workflow_dispatch:
+
+# 最小权限集合：Pages 发布必需的三项，别的一项都不给。
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只允许一个发布流程；不取消正在进行的，
+# 避免「构建完还没发布就被新 commit 掐掉」导致线上停在旧版本。
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      # 用 ci 而非 install：严格按 package-lock.json 装，
+      # 保证线上产物与本地验证过的那一份依赖树完全一致。
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        # SITE_URL 显式注入，避免产物里的 canonical / sitemap 带上
+        # 某个开发机的地址。站点是用户页仓库，根路径 /，不配 base。
+        env:
+          SITE_URL: https://xpbob.github.io
+          # 留空 = 关闭埋点；Pages 无 /blog-api/track 端点
+          PUBLIC_TRACK_ENDPOINT: ''
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
