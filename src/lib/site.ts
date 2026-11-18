@@ -8,7 +8,7 @@
 export const SITE_URL = (import.meta.env.SITE || 'https://xpbob.github.io').replace(/\/+$/, '');
 export const SITE = {
   url: SITE_URL,
-  title: 'xpbob.site',
+  title: 'xpbob.github.io',
   /** 作者实体：文章页 JSON-LD 的 Person，也是信任信号展示源 */
   author: {
     name: 'xpbob',

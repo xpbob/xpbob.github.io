@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "xpbob.site 前台（Astro SSG）",
+  "description": "xpbob.github.io 前台（Astro SSG）",
   "engines": {
     "node": ">=22"
   },
