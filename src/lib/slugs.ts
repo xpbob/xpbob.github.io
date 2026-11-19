@@ -44,6 +44,7 @@ const SLUG_MAP: Record<string, string> = {
   GraalVM: 'graalvm',
   网关: 'gateway',
   性能: 'performance',
+  SIMD: 'simd',
 
   // ── 预留给后续迁移的功能性术语 ──────────────────────────
   异步: 'async',
